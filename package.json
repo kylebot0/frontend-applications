@@ -1,0 +1,25 @@
+{
+    "name": "Frontend-applications",
+    "version": "1.0.0",
+    "description": "-",
+    "main": "Index.js",
+    "scripts": {
+        "dev": "nodemon server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kylebot0/time.git"
+    },
+    "author": "Kyle Bot",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/kylebot0/time/issues"
+    },
+    "homepage": "https://github.com/kylebot0/time#readme",
+    "devDependencies": {
+        "nodemon": "^1.19.1"
+    },
+    "dependencies": {
+        "dotenv": "^8.1.0"
+    }
+}
