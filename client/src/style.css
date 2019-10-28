@@ -62,5 +62,21 @@ nav {
     width: 100vw;
     background-color: black;
     opacity: 0.3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
 
+.container-title {
+    width: 30%;
+    height: 15%;
+    background-color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.splash-title {
+    font-family: 'Lato', sans-serif;
 }
