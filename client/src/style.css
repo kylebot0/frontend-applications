@@ -80,3 +80,63 @@ nav {
 .splash-title {
     font-family: 'Lato', sans-serif;
 }
+
+.start-container {
+    height: 70vh;
+    width: 80vw;
+    background-color: #FFF;
+    border-radius: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.item-img {
+    height: 30vh;
+    width: auto;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.timeline {
+    display: flex;
+    width: 70vw;
+    height: 40vh;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+    left: 5vw;
+
+}
+
+.timeline-inside {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    height: 4px;
+    background-color: black;
+    width: 100%;
+}
+
+.dot {
+    transition: 300ms transform;
+    border-radius: 999px;
+    background-color: black;
+    height: 1em;
+    width: 1em;
+    z-index: 10;
+}
+
+.dot:hover {
+    transition: 300ms transform;
+    cursor: pointer;
+    transform: scale(1.5);
+}

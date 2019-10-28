@@ -1,9 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Splash() {
   return (
     <div className="container-title">
-      <h1 className="splash-title">Begin</h1>
+    <Link className="splash-title" to="/start">
+    Start
+    </Link>
     </div>
   );
 }

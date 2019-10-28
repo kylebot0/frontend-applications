@@ -3,10 +3,14 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Navbar from "./components/navbar/navbar.js";
 import Splash from "./components/splash/splash.js";
+import Item from "./components/item.js";
+import Timeline from "./components/timeline.js";
+
 import "./style.css";
 
 class App extends React.Component {
   state = {
+    stage: 0,
     render: {
       img: "",
       title: "",
@@ -28,23 +32,28 @@ class App extends React.Component {
         ?cho dct:created ?date ;
         edm:isShownBy ?imgUrl ;
         dc:title ?title .
-        FILTER (?date < "2000" && ?date > "1900") .
+        FILTER (xsd:integer(?date)) .
         FILTER langMatches(lang(?title), "ned") .
-        } LIMIT 10
+        } 
+        LIMIT 100
         `;
     const runQuery = (url, query) => {
-      //Test if the endpoint is up and print result to page
       // Call the url with the query attached, output data
       fetch(url + "?query=" + encodeURIComponent(query) + "&format=json")
         .then(res => res.json())
         .then(json => {
-          let results = json.results.bindings[0];
-          console.log(results);
+          let results = json.results.bindings;
+          let itemArray = [];
+          for(let i = 0; i < 10; i++){
+            var item = results[Math.floor(Math.random() * results.length)];
+            itemArray.push(item);
+          }
+          console.log(itemArray);
           this.setState({
             render: {
-              img: results.imgUrl.value,
-              title: results.title.value,
-              date: results.date.value
+              img: item.imgUrl.value,
+              title: item.title.value,
+              date: item.date.value
             }
           });
         });
@@ -55,12 +64,23 @@ class App extends React.Component {
     return (
       <Router>
         <Navbar />
+
         <Route exact path="/">
           <Splash />
         </Route>
-        <Route exact path="/start">
-          <Splash />
-        </Route>
+
+        <Route
+          path="/start"
+          render={props => (
+            <div className="start-container">
+            <Item
+            render={this.state.render}
+            />
+            <Timeline 
+            />
+            </div>
+          )}
+        />
       </Router>
     );
   }
