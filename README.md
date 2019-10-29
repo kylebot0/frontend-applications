@@ -7,10 +7,13 @@
 - [Features](#Features)
   - [API request](#API-request)
   - [Timeline features](#Timeline-features)
-  - [Upcoming features](#Upcomming-features)
+  - [Upcoming features](#Upcoming-features)
   - [Known Bugs](#Known-Bugs)
 - [Functionality](#Functionality)
-- [Personal Progression](#Progression)
+- [Installation](#Installation)
+  - [Before you clone](#Before you clone)
+  - [Install the app](#Install the app)
+  - [Usage](#Usage)
   
 ## Live demo
 
@@ -49,6 +52,45 @@ The app starts with an API request to the NMVW collection API. It searches for 3
 ---
 
 ## Functionality
+
+---
+
+## Installation
+
+### Before you clone
+
+- [x] Install Node.js
+- [x] Install a Code Editor
+- [x] A CLI
+
+### Install the app
+```
+git clone https://github.com/kylebot0/frontend-applications.git
+```
+Get into the right folder
+```
+cd client
+```
+Install npm packages
+```
+npm install
+```
+Run the application
+```
+npm run start
+```
+If you wanna build the app use
+```
+npm run build
+```
+
+### Usage
+
+Start the application
+```
+npm run start
+```
+
 
 
 
