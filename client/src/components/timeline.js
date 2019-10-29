@@ -14,10 +14,10 @@ export class timeline extends Component {
         let offset = Math.floor(Math.random() * (max - min + 1)) + min;
         // let offsetMax = Math.floor(Math.random() * (50 - 5 + 1)) + 10;
         if(date > 1963) {
+            
+            offset = offset / 2;
             let dateMax = date + offset;
             console.log(dateMax);
-            offset = offset % 2;
-            
             if (dateMax > 2019) {
               date = 2019;
               dateArray.push(date - Math.floor(Math.random() * 50 + 1));
