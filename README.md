@@ -1,4 +1,4 @@
-# Frontend applications
+# Time Guesser
 
 ## Table of Contents
 
@@ -51,10 +51,6 @@ The app starts with an API request to the NMVW collection API. It searches for 3
 
 ---
 
-## Functionality
-
----
-
 ## Installation
 
 ### Before you clone
@@ -95,6 +91,3 @@ npm run start
 
 
 ---
-
-## Personal Progression
-
