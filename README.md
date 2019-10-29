@@ -112,4 +112,3 @@ npm run start
 Find the license [here](https://github.com/kylebot0/frontend-applications/blob/master/LICENSE)
 
 
----
