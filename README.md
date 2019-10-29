@@ -1,6 +1,6 @@
 # Time Guesser
 ![preview](https://github.com/kylebot0/frontend-applications/blob/master/client/public/images/github-images/Schermafbeelding%202019-10-29%20om%2012.35.45.png)
-## Table of Contents
+## Table of Contents 🗃
 
 - [Live demo](#Live-demo)
 - [Description](#Description)
@@ -19,11 +19,11 @@
 
 [You can find the demo here]. (insert link)
 
-## Description
+## Description 📝
 
 During this course I created a frontend app with React. The data I use comes from the NMVW Collection API. The user has the ability to play a game where they have to guess from which time the object comes from. The item page shows an object with a title and picture along with a timeline aswell, where they can place a marker. The closer the user is to the correct time, the more points they get.
 
-## Features
+## Features 🛠️
 
 ### API request
 
@@ -52,7 +52,7 @@ data: {
 - [ ] Able to search a specific country's collection.
 
 
-## Installation
+## Installation 🔍
 
 ### Before you clone
 
