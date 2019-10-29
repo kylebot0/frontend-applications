@@ -29,9 +29,11 @@ During this course I created a frontend app with React. The data I use comes fro
 
 The app starts with an API request to the NMVW collection API. It searches for 3 things using a endpoint and a SparQL query.
 ```
-?title
-?date
-?imgUrl
+data: {
+  title: string
+  date: string
+  imgUrl: string
+ }
 ```
 
 ### Timeline features
