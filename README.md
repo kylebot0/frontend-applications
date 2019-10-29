@@ -51,7 +51,6 @@ data: {
 
 - [ ] Able to search a specific country's collection.
 
----
 
 ## Installation
 
