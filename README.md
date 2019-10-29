@@ -80,6 +80,26 @@ If you wanna build the app use
 ```
 npm run build
 ```
+### Gitignore
+```
+# dependencies
+/node_modules
+/config
+/scripts
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+```
 
 ### Usage
 
