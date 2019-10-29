@@ -108,6 +108,10 @@ Start the application
 npm run start
 ```
 
+## Credits
+
+Shoutout naar gio voor het linkerbolletje -
+
 ## License
 Find the license [here](https://github.com/kylebot0/frontend-applications/blob/master/LICENSE)
 
