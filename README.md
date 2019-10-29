@@ -11,8 +11,8 @@
   - [Known Bugs](#Known-Bugs)
 - [Functionality](#Functionality)
 - [Installation](#Installation)
-  - [Before you clone](#Before you clone)
-  - [Install the app](#Install the app)
+  - [Before you clone](#Before-you-clone)
+  - [Install the app](#Install-the-app)
   - [Usage](#Usage)
   
 ## Live demo
