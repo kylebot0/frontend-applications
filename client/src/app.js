@@ -11,6 +11,8 @@ import "./style.css";
 class App extends React.Component {
   state = {
     stage: 0,
+    counter: "",
+    itemArray: [],
     render: {
       img: "",
       title: "",
@@ -42,21 +44,23 @@ class App extends React.Component {
       fetch(url + "?query=" + encodeURIComponent(query) + "&format=json")
         .then(res => res.json())
         .then(json => {
-          const copyrightUrl = "http://collectie.wereldculturen.nl/cc/imageproxy.ashx?server=localhost&port=17581&filename=images/CopyRightImage.jpg";
+          const copyrightUrl =
+            "http://collectie.wereldculturen.nl/cc/imageproxy.ashx?server=localhost&port=17581&filename=images/CopyRightImage.jpg";
           let results = json.results.bindings;
           let itemArray = [];
-            for (let i = 0; i < results.length; i++) {
-              results[i].date.value = parseInt(results[i].date.value);
-              if (json.results.bindings[i].imgUrl.value == copyrightUrl) {
-                delete json.results.bindings[i];
-              }
+          for (let i = 0; i < results.length; i++) {
+            results[i].date.value = parseInt(results[i].date.value);
+            if (json.results.bindings[i].imgUrl.value == copyrightUrl) {
+              delete json.results.bindings[i];
             }
-          for(let i = 0; i < 10; i++){
+          }
+          for (let i = 0; i < 10; i++) {
             var item = results[Math.floor(Math.random() * results.length)];
             itemArray.push(item);
           }
           console.log(itemArray);
           this.setState({
+            itemArray: itemArray,
             render: {
               img: item.imgUrl.value,
               title: item.title.value,
@@ -64,10 +68,10 @@ class App extends React.Component {
             }
           });
         });
-    }
+    };
     runQuery(url, query);
-  };
-  
+  }
+
   render() {
     return (
       <Router>
@@ -81,12 +85,8 @@ class App extends React.Component {
           path="/start"
           render={props => (
             <div className="start-container">
-            <Item
-            render={this.state.render}
-            />
-            <Timeline 
-            render={this.state.render}
-            />
+              <Item render={this.state.render} />
+              <Timeline render={this.state.render} />
             </div>
           )}
         />
