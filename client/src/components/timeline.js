@@ -1,50 +1,25 @@
 import React, { Component } from "react";
 
 export class timeline extends Component {
-    constructor(props) {
-        super(props);
-         this.state = {
-           stage: this.props.stage,
-           data: {
-             date: 0,
-             dateArray: []
-           }
-         };
-        this.handleClick = this.handleClick.bind(this);
+         constructor(props) {
+           super(props);
+           this.state = {
+             stage: 1,
+             data: {
+               date: 0,
+               dateArray: []
+             }
+           };
+           this.handleClick = this.handleClick.bind(this);
+           this.offsetDate = this.offsetDate.bind(this);
+         }
 
-        }
-         componentDidMount() {
-           let date = this.props.render[0].date.value;
+         componentDidMount(props) {
+           let date = this.props.render[this.props.stage].date.value;
            console.log(date);
 
-           const offsetDate = () => {
-             let dateArray = [];
-             for (let i = 0; i < 9; i++) {
-               //Offset van -50 tot max 50
-               let min = Math.ceil(-50);
-               let max = Math.floor(50);
-               let offset = Math.floor(Math.random() * (max - min + 1)) + min;
-               // let offsetMax = Math.floor(Math.random() * (50 - 5 + 1)) + 10;
-               if (date > 1963) {
-                 offset = Math.floor(offset / 2);
-                 let dateMax = date + offset;
-                 console.log(dateMax);
-                 if (dateMax > 2019) {
-                   date = 2019;
-                   dateArray.push(date - Math.floor(Math.random() * 50 + 1));
-                 } else {
-                   dateArray.push(date + offset);
-                 }
-               } else {
-                 dateArray.push(date + offset);
-               }
-             }
-             dateArray.push(date);
-             dateArray.sort(function(a, b) {
-               return a - b;
-             });
-             console.log(dateArray);
-
+           let dateArray = this.offsetDate(date);
+            console.log(dateArray);
              this.setState(
                {
                  data: {
@@ -52,10 +27,54 @@ export class timeline extends Component {
                    dateArray: dateArray
                  }
                },
-               console.log(this.state)
              );
-           };
-           offsetDate();
+         };
+
+        getDerivedStateFromProps(props, state) {
+           if (props.stage !== state.stage) {
+               let date = props.render[props.stage].date.value;
+               console.log(date);
+               console.log(this)
+               let dateArray = this.offsetDate(date);
+               
+             return {
+               stage: props.stage,
+               data: {
+                 date: props.render[props.stage].date.value,
+                 dateArray: dateArray
+               }
+             };
+           }
+           return null;
+         }
+
+        offsetDate(date) {
+             let dateArray = [];
+              for (let i = 0; i < 9; i++) {
+                //Offset van -50 tot max 50
+                let min = Math.ceil(-50);
+                let max = Math.floor(50);
+                let offset = Math.floor(Math.random() * (max - min + 1)) + min;
+                if (date > 1963) {
+                  offset = Math.floor(offset / 2);
+                  let dateMax = date + offset;
+                  console.log(dateMax);
+                  if (dateMax > 2019) {
+                    date = 2019;
+                    dateArray.push(date - Math.floor(Math.random() * 50 + 1));
+                  } else {
+                    dateArray.push(date + offset);
+                  }
+                } else {
+                  dateArray.push(date + offset);
+                }
+              }
+              dateArray.push(date);
+              dateArray.sort(function(a, b) {
+                return a - b;
+              });
+              return dateArray;
+              console.log(dateArray);
          }
 
          handleClick(e) {
@@ -63,8 +82,8 @@ export class timeline extends Component {
            e.stopPropagation();
            this.props.mutateStage(this.state.stage++);
            console.log("State:" + this.state.stage);
-
          }
+
          render() {
            return (
              <div className="timeline">

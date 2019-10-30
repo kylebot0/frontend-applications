@@ -1,16 +1,40 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export class item extends Component {
-         state = {
-             stage: this.props.stage,
-           render: {
-             title: this.props.render[0].title.value,
-             imgUrl: this.props.render[0].imgUrl.value
-           }
-         };
-         componentDidMount() {
-
+         constructor(props) {
+           super(props);
+           this.state = {
+             stage: 1,
+             render: {
+               title: "",
+               imgUrl: ""
+             }
+           };
          }
+
+         componentDidMount(props) {
+           return this.setState({
+             stage: this.props.stage,
+             render: {
+               title: this.props.render[this.props.stage].title.value,
+               imgUrl: this.props.render[this.props.stage].imgUrl.value
+             }
+           });
+         }
+
+         static getDerivedStateFromProps(props, state) {
+           if (props.stage !== state.stage) {
+             return {
+               stage: props.stage,
+               render: {
+                 title: props.render[props.stage].title.value,
+                 imgUrl: props.render[props.stage].imgUrl.value
+               }
+             };
+           }
+           return null;
+         }
+
          render() {
            return (
              <div className="img-container">
@@ -23,6 +47,10 @@ export class item extends Component {
              </div>
            );
          }
+
+        //  componentWillUnmount() {
+
+        //  }
        }
 
-export default item
+export default item;

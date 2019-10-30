@@ -12,12 +12,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stateChildren: 0,
+      stateChildren: 1,
       counter: "",
       itemArray: []
     };
-    this.mutateChild2 = this.mutateChild2.bind(this);
-    this.mutateChild1 = this.mutateChild1.bind(this);
+    this.mutateChild = this.mutateChild.bind(this);
   }
   componentDidMount() {
     const url =
@@ -68,16 +67,13 @@ class App extends React.Component {
     };
     runQuery(url, query);
   }
-  mutateChild1(value) {
+  mutateChild(value) {
+      console.log(value);
     this.setState({
       stateChildren: value
     });
   }
-  mutateChild2(value) {
-    this.setState({
-      stateChildren: value
-    });
-  }
+ 
   render() {
     return (
       <Router>
@@ -94,12 +90,12 @@ class App extends React.Component {
               <Item
                 render={this.state.itemArray}
                 stage={this.state.stateChildren}
-                mutateStage={this.mutateChild1}
+                mutateStage={this.mutateChild}
               />
               <Timeline
                 render={this.state.itemArray}
                 stage={this.state.stateChildren}
-                mutateStage={this.mutateChild2}
+                mutateStage={this.mutateChild}
               />
             </div>
           )}
