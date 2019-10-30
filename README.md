@@ -27,7 +27,7 @@ During this course I created a frontend app with React. The data I use comes fro
 
 ### API request
 
-The app starts with an API request to the NMVW collection API. It searches for 3 things using a endpoint and a SparQL query.
+The app starts with an API request to the NMVW collection API. It searches for 3 things using a endpoint and a SparQL query. It collects a title from an object, the date its from and the image URL. It puts that data in a data object and is used throughout the application.
 ```
 data: {
   title: string
@@ -39,6 +39,7 @@ data: {
 ### Timeline features
 
 - [x] Searches for a random collection.
+- [x] Offsets the original date and creates a timeline with it.
 - [x] Able to select a timestamp.
 - [x] Earn points if your close to the correct answer.
 
@@ -46,6 +47,7 @@ data: {
 ### Known Bugs
 
 - If the year is close to 2000 it automatically sets the offset to 2019.
+- Sometimes contains same years.
 
 ### Upcoming features
 
