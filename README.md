@@ -112,7 +112,7 @@ npm run start
 
 ## Credits
 
-Shoutout naar gio voor het linkerbolletje -
+The processing of the query is made by Laurens, you can find him [here](https://github.com/razpudding) on github.
 
 ## License
 Find the license [here](https://github.com/kylebot0/frontend-applications/blob/master/LICENSE)
