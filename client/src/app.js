@@ -50,22 +50,24 @@ class App extends React.Component {
           let itemArray = [];
           for (let i = 0; i < results.length; i++) {
             results[i].date.value = parseInt(results[i].date.value);
-            if (json.results.bindings[i].imgUrl.value == copyrightUrl) {
-              delete json.results.bindings[i];
+            if (results[i].imgUrl.value == copyrightUrl) {
+              delete results[i];
             }
           }
+              
           for (let i = 0; i < 10; i++) {
             var item = results[Math.floor(Math.random() * results.length)];
             itemArray.push(item);
           }
           console.log(itemArray);
+          console.log(itemArray.filter(Boolean));
           this.setState({
-            itemArray: itemArray,
-            render: {
-              img: item.imgUrl.value,
-              title: item.title.value,
-              date: item.date.value
-            }
+            itemArray: itemArray.filter(Boolean)
+            // render: {
+            //   img: item.imgUrl.value,
+            //   title: item.title.value,
+            //   date: item.date.value
+            // }
           });
         });
     };
@@ -85,8 +87,8 @@ class App extends React.Component {
           path="/start"
           render={props => (
             <div className="start-container">
-              <Item render={this.state.render} />
-              <Timeline render={this.state.render} />
+              <Item render={this.state.itemArray} />
+              <Timeline render={this.state.itemArray} />
             </div>
           )}
         />

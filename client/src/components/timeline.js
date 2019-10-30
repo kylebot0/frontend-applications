@@ -7,12 +7,12 @@ export class timeline extends Component {
              },
          }
          componentDidMount() {
-           let date = this.props.render.date;
+           let date = this.props.itemArray.date;
            console.log(date);
 
            const offsetDate = () => {
              let dateArray = [];
-             for (let i = 0; i < 11; i++) {
+             for (let i = 0; i < 9; i++) {
                //Offset van -50 tot max 50
                let min = Math.ceil(-50);
                let max = Math.floor(50);
@@ -126,22 +126,6 @@ export class timeline extends Component {
                  <p>
                    {this.state.data.dateArray[9] > -50
                      ? this.state.data.dateArray[9]
-                     : "leeg"}
-                 </p>
-               </div>
-               <div className="dot" id="11">
-                 <span></span>
-                 <p>
-                   {this.state.data.dateArray[10] > -50
-                     ? this.state.data.dateArray[10]
-                     : "leeg"}
-                 </p>
-               </div>
-               <div className="dot" id="12">
-                 <span></span>
-                 <p>
-                   {this.state.data.dateArray[11] > -50
-                     ? this.state.data.dateArray[11]
                      : "leeg"}
                  </p>
                </div>
