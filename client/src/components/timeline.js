@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 
 export class timeline extends Component {
-         state = {
-             data: {
-                dateArray: [],
-             },
-         }
+    constructor(props) {
+        super(props);
+         this.state = {
+           stage: this.props.stage,
+           data: {
+             date: 0,
+             dateArray: []
+           }
+         };
+        this.handleClick = this.handleClick.bind(this);
+
+        }
          componentDidMount() {
-           let date = this.props.itemArray.date;
+           let date = this.props.render[0].date.value;
            console.log(date);
 
            const offsetDate = () => {
@@ -33,101 +40,113 @@ export class timeline extends Component {
                }
              }
              dateArray.push(date);
-              dateArray.sort(function(a, b) {
-                return a - b;
-              });
+             dateArray.sort(function(a, b) {
+               return a - b;
+             });
              console.log(dateArray);
 
-             this.setState({
-               data: {
-                 dateArray: dateArray
-               }
-             }, console.log(this.state));
+             this.setState(
+               {
+                 data: {
+                   date: date,
+                   dateArray: dateArray
+                 }
+               },
+               console.log(this.state)
+             );
            };
            offsetDate();
          }
-         render(props) {
+
+         handleClick(e) {
+           e.preventDefault();
+           e.stopPropagation();
+           this.props.mutateStage(this.state.stage++);
+           console.log("State:" + this.state.stage);
+
+         }
+         render() {
            return (
              <div className="timeline">
                <div className="dot" id="1">
                  <span></span>
-                 <p>
+                 <a onClick={this.handleClick}>
                    {this.state.data.dateArray[0] > -50
                      ? this.state.data.dateArray[0]
                      : "leeg"}
-                 </p>
+                 </a>
                </div>
                <div className="dot" id="2">
                  <span></span>
-                 <p>
+                 <a>
                    {this.state.data.dateArray[1] > -50
                      ? this.state.data.dateArray[1]
                      : "leeg"}
-                 </p>
+                 </a>
                </div>
                <div className="dot" id="3">
                  <span></span>
-                 <p>
+                 <a>
                    {this.state.data.dateArray[2] > -50
                      ? this.state.data.dateArray[2]
                      : "leeg"}
-                 </p>
+                 </a>
                </div>
                <div className="dot" id="4">
                  <span></span>
-                 <p>
+                 <a>
                    {this.state.data.dateArray[3] > -50
                      ? this.state.data.dateArray[3]
                      : "leeg"}
-                 </p>
+                 </a>
                </div>
                <div className="dot" id="5">
                  <span></span>
-                 <p>
+                 <a>
                    {this.state.data.dateArray[4] > -50
                      ? this.state.data.dateArray[4]
                      : "leeg"}
-                 </p>
+                 </a>
                </div>
                <div className="dot" id="6">
                  <span></span>
-                 <p>
+                 <a>
                    {this.state.data.dateArray[5] > -50
                      ? this.state.data.dateArray[5]
                      : "leeg"}
-                 </p>
+                 </a>
                </div>
                <div className="dot" id="7">
                  <span></span>
-                 <p>
+                 <a>
                    {this.state.data.dateArray[6] > -50
                      ? this.state.data.dateArray[6]
                      : "leeg"}
-                 </p>
+                 </a>
                </div>
                <div className="dot" id="8">
                  <span></span>
-                 <p>
+                 <a>
                    {this.state.data.dateArray[7] > -50
                      ? this.state.data.dateArray[7]
                      : "leeg"}
-                 </p>
+                 </a>
                </div>
                <div className="dot" id="9">
                  <span></span>
-                 <p>
+                 <a>
                    {this.state.data.dateArray[8] > -50
                      ? this.state.data.dateArray[8]
                      : "leeg"}
-                 </p>
+                 </a>
                </div>
                <div className="dot" id="10">
                  <span></span>
-                 <p>
+                 <a>
                    {this.state.data.dateArray[9] > -50
                      ? this.state.data.dateArray[9]
                      : "leeg"}
-                 </p>
+                 </a>
                </div>
                <div className="timeline-inside"></div>
              </div>

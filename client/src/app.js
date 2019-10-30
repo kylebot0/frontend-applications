@@ -9,16 +9,16 @@ import Timeline from "./components/timeline.js";
 import "./style.css";
 
 class App extends React.Component {
-  state = {
-    stage: 0,
-    counter: "",
-    itemArray: [],
-    render: {
-      img: "",
-      title: "",
-      date: ""
-    }
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      stateChildren: 0,
+      counter: "",
+      itemArray: []
+    };
+    this.mutateChild2 = this.mutateChild2.bind(this);
+    this.mutateChild1 = this.mutateChild1.bind(this);
+  }
   componentDidMount() {
     const url =
       "https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-40/sparql";
@@ -54,7 +54,7 @@ class App extends React.Component {
               delete results[i];
             }
           }
-              
+
           for (let i = 0; i < 10; i++) {
             var item = results[Math.floor(Math.random() * results.length)];
             itemArray.push(item);
@@ -63,17 +63,21 @@ class App extends React.Component {
           console.log(itemArray.filter(Boolean));
           this.setState({
             itemArray: itemArray.filter(Boolean)
-            // render: {
-            //   img: item.imgUrl.value,
-            //   title: item.title.value,
-            //   date: item.date.value
-            // }
           });
         });
     };
     runQuery(url, query);
   }
-
+  mutateChild1(value) {
+    this.setState({
+      stateChildren: value
+    });
+  }
+  mutateChild2(value) {
+    this.setState({
+      stateChildren: value
+    });
+  }
   render() {
     return (
       <Router>
@@ -87,8 +91,16 @@ class App extends React.Component {
           path="/start"
           render={props => (
             <div className="start-container">
-              <Item render={this.state.itemArray} />
-              <Timeline render={this.state.itemArray} />
+              <Item
+                render={this.state.itemArray}
+                stage={this.state.stateChildren}
+                mutateStage={this.mutateChild1}
+              />
+              <Timeline
+                render={this.state.itemArray}
+                stage={this.state.stateChildren}
+                mutateStage={this.mutateChild2}
+              />
             </div>
           )}
         />
