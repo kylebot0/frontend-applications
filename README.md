@@ -27,8 +27,16 @@ During this course I created a frontend app with React. The data I use comes fro
 
 ### API request
 
-The app starts with an API request to the NMVW collection API. It searches for 3 things using a endpoint and a SparQL query. It collects a title from an object, the date its from and the image URL. It puts that data in a data object and is used throughout the application.
+The app starts with an API request to the NMVW collection API. It searches for 3 things using a endpoint and a SparQL query. It collects a title from an object, the date and the image URL. It puts that data in a data or render object and is used throughout the application.
+
+<!-- language: json -->
 ```
+render: {
+  title: string
+  date: string
+  imgUrl: string
+ }
+ 
 data: {
   title: string
   date: string
@@ -36,22 +44,44 @@ data: {
  }
 ```
 
+For the real geeks, this is the SparQL query i used.
+<!-- language: SparQL -->
+```
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX dc: <http://purl.org/dc/elements/1.1/>
+        PREFIX dct: <http://purl.org/dc/terms/>
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+        PREFIX edm: <http://www.europeana.eu/schemas/edm/>
+        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+        SELECT ?title ?date ?imgUrl WHERE {
+        ?cho dct:created ?date ;
+        edm:isShownBy ?imgUrl ;
+        dc:title ?title .
+        FILTER (xsd:integer(?date)) .
+        FILTER langMatches(lang(?title), "ned") .
+        } 
+        LIMIT 100
+```
+
 ### Timeline features
 
 - [x] Searches for a random collection.
 - [x] Offsets the original date and creates a timeline with it.
 - [x] Able to select a timestamp.
-- [x] Earn points if your close to the correct answer.
+- [x] Change data depending on the state.
 
 
 ### Known Bugs
 
 - If the year is close to 2000 it automatically sets the offset to 2019.
 - Sometimes contains same years.
+- First click on the timeline doesnt register well.
 
 ### Upcoming features
 
 - [ ] Able to search a specific country's collection.
+- [ ] Earn points if your close to the correct answer.
 
 
 ## Installation 🔍
@@ -60,7 +90,7 @@ data: {
 
 - [x] Install Node.js
 - [x] Install a Code Editor
-- [x] A CLI
+- [x] Start up your CLI
 
 ### Install the app
 ```
@@ -68,7 +98,7 @@ git clone https://github.com/kylebot0/frontend-applications.git
 ```
 Get into the right folder
 ```
-cd client
+cd frontend-applications/client
 ```
 Install npm packages
 ```
@@ -83,6 +113,7 @@ If you wanna build the app use
 npm run build
 ```
 ### Gitignore
+My .gitignore contains all of the files and maps you dont want in your application, use this if you're going to commit and push to your own repo.
 ```
 # dependencies
 /node_modules
@@ -108,6 +139,11 @@ yarn-error.log*
 Start the application
 ```
 npm run start
+```
+
+Then it should fire up a localhost in your browser, if that's not the case use this in your address bar.
+```
+localhost:3000
 ```
 
 ## Credits
