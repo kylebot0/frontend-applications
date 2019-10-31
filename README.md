@@ -29,8 +29,8 @@ During this course I created a frontend app with React. The data I use comes fro
 
 The app starts with an API request to the NMVW collection API. It searches for 3 things using a endpoint and a SparQL query. It collects a title from an object, the date and the image URL. It puts that data in a data or render object and is used throughout the application.
 
-<!-- language: json -->
-```
+
+```json
 render: {
   title: string
   date: string
@@ -45,8 +45,8 @@ data: {
 ```
 
 For the real geeks, this is the SparQL query i used.
-<!-- language: SparQL -->
-```
+
+```sparql
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX dc: <http://purl.org/dc/elements/1.1/>
         PREFIX dct: <http://purl.org/dc/terms/>
