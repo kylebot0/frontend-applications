@@ -19,6 +19,10 @@
 
 [You can find the demo here]. (https://kylebot0.github.io/frontend-applications/)
 
+## Concept
+
+The user has the ability to play a game where they have to guess from which time the object comes from. The item page shows an object with a title and picture along with a timeline aswell, where they can place a marker. The closer the user is to the correct time, the more points they get. I don't want it to be only time specific, but also to mix things up certain options that can tell if an object is for example before or after Napoleon. That was it is less hard to actually get the full amount of points, but i still want it to be competitive so most of the time it will show a timeline.
+
 ## Description 📝
 
 During this course I created a frontend app with React. The data I use comes from the NMVW Collection API. The user has the ability to play a game where they have to guess from which time the object comes from. The item page shows an object with a title and picture along with a timeline aswell, where they can place a marker. The closer the user is to the correct time, the more points they get.
@@ -149,6 +153,10 @@ localhost:3000
 ## Credits
 
 The processing of the query is made by Laurens, you can find him [here](https://github.com/razpudding) on github.
+Thanks Giovanni for this part in the query.
+```javascript
+FILTER (xsd:integer(?date)) .
+```
 
 ## License
 Find the license [here](https://github.com/kylebot0/frontend-applications/blob/master/LICENSE)
